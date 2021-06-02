@@ -1,3 +1,6 @@
+
+app.py
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -9,8 +12,10 @@ __pycache__/
 # Distribution / packaging
 .Python
 build/
+.idea/
 develop-eggs/
 dist/
+env/
 downloads/
 eggs/
 .eggs/
