@@ -140,12 +140,13 @@ class YoutubeSearch:
         continuation = None
         items = []
         if response:
-            contents = response["onResponseReceivedCommands"][0]["appendContinuationItemsAction"]["continuationItems"]
-            for item in contents:
-                if "itemSectionRenderer" in item:
-                    items = self.__parse_html_videos(item["itemSectionRenderer"]["contents"])
+            if "onResponseReceivedCommands" in response:
+                contents = response["onResponseReceivedCommands"][0]["appendContinuationItemsAction"]["continuationItems"]
+                for item in contents:
+                    if "itemSectionRenderer" in item:
+                        items = self.__parse_html_videos(item["itemSectionRenderer"]["contents"])
 
-            continuation = self._get_continuation_token(contents)
+                continuation = self._get_continuation_token(contents)
 
         return {"items": items, "continuation": continuation}
 
