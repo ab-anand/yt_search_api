@@ -23,7 +23,7 @@ setup(
     author_email='abhinavanand1905@gmail.com',
     description="A lightweight module to perform a Youtube search",
     long_description=long_description,
-    long_description_content_type="text/x-rst",
+    long_description_content_type='text/x-rst',
     url='https://github.com/ab-anand/yt_search_api',
     license='MIT',
     install_requires=[
