@@ -28,7 +28,8 @@ setup(
     license='MIT',
     install_requires=[
         "pathlib >= 1.0.1",
-        "setuptools >= 44.1.1"
+        "setuptools >= 44.1.1",
+        "requests >= 2.25.1"
     ],
     # dependency_links=dependency_links,
     # adding package data to it

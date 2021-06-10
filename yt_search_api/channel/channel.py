@@ -34,10 +34,9 @@ class YTChannel:
             
         return channel_info
 
-    @staticmethod
-    def __get_subscribers_count(response):
+    def __get_subscribers_count(self, response):
         try:
-            subscribers_count = "NOT FOUND"
+            subscribers_value = -1
 
             subscribers_text = "subscriberCountText"
             if subscribers_text in response:
@@ -50,10 +49,11 @@ class YTChannel:
 
                 stop = response.index("}", start) - 1
                 subscribers_count = response[start:stop]
-            return subscribers_count
+                subscribers_value = self.__parse_subscribers_count(subscribers_count)
+            return subscribers_value
         except Exception as e:
             print(str(e))
-            return "NOT FOUND"
+            return -1
 
     @staticmethod
     def __get_playAll_url(response):
@@ -74,3 +74,17 @@ class YTChannel:
         except Exception as e:
             print(str(e))
             return "NOT FOUND"
+
+    @staticmethod
+    def __parse_subscribers_count(subscribers_text):
+        value_conversion = {'K': 10**3, 'M': 10**6}
+        result = -1
+        if "subscribers" in subscribers_text:
+            subs = subscribers_text.replace("subscribers", "").strip()
+            subs_value = float(subs[:-1])
+            if subs[-1] in value_conversion:
+                subs_value = subs_value*value_conversion[subs[-1]]
+
+            result = int(subs_value)
+        return result
+
