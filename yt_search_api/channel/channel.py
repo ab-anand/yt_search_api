@@ -81,10 +81,10 @@ class YTChannel:
         result = -1
         if "subscribers" in subscribers_text:
             subs = subscribers_text.replace("subscribers", "").strip()
-            subs_value = float(subs[:-1])
             if subs[-1] in value_conversion:
-                subs_value = subs_value*value_conversion[subs[-1]]
+                value = subs[-1]
+                subs = float(subs[:-1])*value_conversion[value]
 
-            result = int(subs_value)
+            result = int(subs)
         return result
 
